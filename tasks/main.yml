@@ -1,0 +1,42 @@
+---
+- name: Check if pong-command exists
+  command: test -f /usr/local/bin/pong
+  register: PONG_INSTALLED
+  ignore_errors: yes
+
+- name: Delete working directory
+  file:
+    path: '{{ work_dir }}'
+    state: absent
+  when: PONG_INSTALLED is failed
+
+- name: Make working directory
+  file:
+    path: '{{ work_dir }}'
+    state: directory
+  when: PONG_INSTALLED is failed
+
+- name: Install 'unzip' with yum
+  yum:
+    name: unzip
+    state: present
+  when: PONG_INSTALLED is failed
+
+- name: Download pong-command.zip from github.com
+  get_url:
+    url: '{{ pong_command_download_url }}'
+    dest: '{{ work_dir }}'
+  when: PONG_INSTALLED is failed
+
+- name: Unzip pong-command.zip
+  unarchive:
+    src: "{{ work_dir }}/linux_amd64.zip"
+    dest: '{{ work_dir }}'
+    remote_src: yes
+  when: PONG_INSTALLED is failed
+
+- name: Install pong-command
+  shell: mv pong /usr/local/bin
+  args:
+    chdir: '{{ work_dir }}'
+  when: PONG_INSTALLED is failed

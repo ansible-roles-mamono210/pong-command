@@ -1,0 +1,3 @@
+---
+- src: https://github.com/ansible-roles-matsumura/pong-command.git
+  name: matsumura.pong-command
