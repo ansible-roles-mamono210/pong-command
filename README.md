@@ -1,4 +1,6 @@
-[![](https://github.com/ansible-roles-matsumura/pong-command/workflows/Build/badge.svg)](https://github.com/ansible-roles-matsumura/pong-command/actions)
+[![](https://github.com/ansible-roles-matsumura/pong-command/workflows/Build/badge.svg)](https://github.com/ansible-roles-matsumura/pong-command/actions?query=workflow%3ABuild)
+[![](https://github.com/ansible-roles-matsumura/pong-command/workflows/Lint/badge.svg)](https://github.com/ansible-roles-matsumura/pong-command/actions?query=workflow%3ALint)
+
 
 Role Description
 =========
