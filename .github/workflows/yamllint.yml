@@ -1,0 +1,21 @@
+---
+name: yamllint
+on: push
+
+jobs:
+  lintAllTheThings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: yaml-lint-1
+        uses: ibiqlik/action-yamllint@v1
+        with:
+          config_file: .yamllint
+          file_or_dir: .github/* meta/* tasks/* tests/*
+
+      - name: yaml-lint-2
+        uses: ibiqlik/action-yamllint@v1
+        with:
+          config_file: .yamllint-max-lenght-107
+          file_or_dir: defaults/*
