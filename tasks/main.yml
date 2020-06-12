@@ -1,8 +1,9 @@
 ---
-- name: Check if pong-command exists
+- name: Check whether pong-command exists
   command: test -f /usr/local/bin/pong
   register: PONG_INSTALLED
-  ignore_errors: yes
+  changed_when: False
+  ignore_errors: True
 
 - name: Delete working directory
   file:
@@ -16,8 +17,8 @@
     state: directory
   when: PONG_INSTALLED is failed
 
-- name: Install 'unzip' with yum
-  yum:
+- name: Install 'unzip'
+  package:
     name: unzip
     state: present
   when: PONG_INSTALLED is failed
