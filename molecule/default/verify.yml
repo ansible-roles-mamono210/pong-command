@@ -14,7 +14,7 @@
       register: OS_VERSION
       changed_when: False
 
-    - name: Show pong-command installed
+    - name: Make sure pong-command is installed
       debug:
         var: PONG_INSTALLED
 
