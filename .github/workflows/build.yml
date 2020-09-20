@@ -53,12 +53,12 @@ jobs:
       - name: Install Ansible galaxy roles
         run: |
           ansible-galaxy role install \
-          -r tests/requirements.yml
+          -r requirements.yml
 
       - name: Install Ansible galaxy collections
         run: |
           ansible-galaxy collection install \
-          -r tests/requirements.yml
+          -r requirements.yml
 
       - name: Execute ansible-playbook command
         env:
@@ -112,8 +112,6 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
           MOLECULE_NO_LOG: False
-          USERNAME: ${{ github.actor }}
-          PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: |
           molecule test
 
