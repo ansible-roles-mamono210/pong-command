@@ -1,7 +1,0 @@
----
-roles:
-  - name: pong-command
-    src: https://github.com/ansible-roles-matsumura/pong-command.git
-
-collections:
-  - name: community.general
