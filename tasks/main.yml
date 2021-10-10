@@ -15,6 +15,7 @@
   ansible.builtin.file:
     path: '{{ work_dir }}'
     state: directory
+    mode: 0755
   when: pong_installed is failed
 
 - name: Install 'unzip'
