@@ -5,19 +5,19 @@
   tasks:
     - name: Check whether pong-command is installed
       ansible.builtin.command: test -f /usr/local/bin/pong
-      register: PONG_INSTALLED
+      register: pong_installed
       changed_when: False
       ignore_errors: True
 
     - name: Check OS version
       ansible.builtin.command: cat /etc/redhat-release
-      register: OS_VERSION
+      register: os_version
       changed_when: False
 
     - name: Make sure pong-command is installed
       ansible.builtin.debug:
-        var: PONG_INSTALLED
+        var: pong_installed
 
     - name: Show OS version
       ansible.builtin.debug:
-        var: OS_VERSION
+        var: os_version

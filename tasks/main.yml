@@ -1,7 +1,7 @@
 ---
 - name: Check whether pong-command exists
   ansible.builtin.command: test -f /usr/local/bin/pong
-  register: PONG_INSTALLED
+  register: pong_installed
   changed_when: False
   ignore_errors: True
 
@@ -9,35 +9,35 @@
   ansible.builtin.file:
     path: '{{ work_dir }}'
     state: absent
-  when: PONG_INSTALLED is failed
+  when: pong_installed is failed
 
 - name: Make working directory
   ansible.builtin.file:
     path: '{{ work_dir }}'
     state: directory
-  when: PONG_INSTALLED is failed
+  when: pong_installed is failed
 
 - name: Install 'unzip'
   ansible.builtin.package:
     name: unzip
     state: present
-  when: PONG_INSTALLED is failed
+  when: pong_installed is failed
 
 - name: Download pong-command.zip from github.com
   ansible.builtin.get_url:
     url: '{{ pong_command_download_url }}'
     dest: '{{ work_dir }}'
-  when: PONG_INSTALLED is failed
+  when: pong_installed is failed
 
 - name: Unzip pong-command.zip
   ansible.builtin.unarchive:
     src: "{{ work_dir }}/linux_amd64.zip"
     dest: '{{ work_dir }}'
     remote_src: yes
-  when: PONG_INSTALLED is failed
+  when: pong_installed is failed
 
 - name: Install pong-command
   ansible.builtin.command: mv pong /usr/local/bin
   args:
     chdir: '{{ work_dir }}'
-  when: PONG_INSTALLED is failed
+  when: pong_installed is failed
