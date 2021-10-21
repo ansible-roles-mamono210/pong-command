@@ -6,46 +6,15 @@ jobs:
   ansible-lint:
     uses: mamono210-github-actions-workflows/ansible-lint/.github/workflows/workflows.yml@main
 
-  molecule:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        distro:
-          - centos7
-          - centos8
-        python-version:
-          - 3.9
+  molecule-centos7:
+    uses: mamono210-github-actions-workflows/molecule-docker/.github/workflows/workflows.yml@main
+    with:
+      distro: centos7
 
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install dependencies
-        run: python3 -m pip install -r molecule/requirements.txt
-
-      - name: Test with Molecule
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO: ${{ matrix.distro }}
-          MOLECULE_NO_LOG: False
-          PROFILE_TASKS_SORT_ORDER: 'none'
-          PROFILE_TASKS_TASK_OUTPUT_LIMIT: '100'
-          PY_COLORS: '1'
-          TZ: 'Asia/Tokyo'
-        run: |
-          molecule test
-
-      - name: Show Ansible version
-        run: |
-          pip list | grep ansible \
-          | GREP_COLORS='mt=01;34' egrep --color=always '[[:digit:]]' \
-          | GREP_COLORS='mt=01;34' egrep --color=always '\.' \
-          | GREP_COLORS='mt=01;33' egrep --color=always 'ansible.* '
-          ansible --version
+  molecule-centos8:
+    uses: mamono210-github-actions-workflows/molecule-docker/.github/workflows/workflows.yml@main
+    with:
+      distro: centos8
 
   trailing-whitespace:
     name: Find Trailing Whitespace
