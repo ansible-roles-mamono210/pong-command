@@ -4,15 +4,15 @@ on: [deployment, push]
 
 jobs:
   ansible-lint:
-    uses: mamono210-github-actions-workflows/ansible-lint/.github/workflows/workflows.yml@main
+    uses: github-actions-reusable-workflows/ansible-lint/.github/workflows/workflows.yml@main
 
   molecule-centos7:
-    uses: mamono210-github-actions-workflows/molecule-docker/.github/workflows/workflows.yml@main
+    uses: github-actions-reusable-workflows/molecule-docker/.github/workflows/workflows.yml@main
     with:
       distro: centos7
 
   molecule-centos8:
-    uses: mamono210-github-actions-workflows/molecule-docker/.github/workflows/workflows.yml@main
+    uses: github-actions-reusable-workflows/molecule-docker/.github/workflows/workflows.yml@main
     with:
       distro: centos8
 
