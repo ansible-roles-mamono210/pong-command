@@ -4,7 +4,7 @@
 Role Description
 =========
 
-Installs [pong-command](https://github.com/kurehajime/pong-command) for CentOS7/CentOS8.
+Installs [pong-command](https://github.com/kurehajime/pong-command) for CentOS7/Stream8.
 
 Requirements
 ------------
