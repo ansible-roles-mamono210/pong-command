@@ -1,5 +1,4 @@
-[![](https://github.com/ansible-roles-matsumura/pong-command/workflows/build/badge.svg)](https://github.com/ansible-roles-matsumura/pong-command/actions?query=workflow%3Abuild)
-
+[![CircleCI](https://circleci.com/gh/ansible-roles-mamono210/pong_command/tree/main.svg?style=svg)](https://circleci.com/gh/ansible-roles-mamono210/pong_command/tree/main)
 
 Role Description
 =========
