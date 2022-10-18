@@ -1,9 +1,4 @@
 ---
-extends: default
-
-ignore: |
-  README.md
-
 yaml-files:
   - '*.yaml'
   - '*.yml'
